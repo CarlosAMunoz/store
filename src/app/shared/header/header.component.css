@@ -1,0 +1,33 @@
+#header img{
+  width: 60px;
+  margin-left: 20px;
+
+}
+
+#nav-bar{
+  font-size: 15px;
+  margin: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#nav-bar a{
+  color: #699BF7
+}
+
+#nav-bar li{
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+
+@media (hover: hover){
+
+  #nav-bar li:hover{
+    border-bottom: solid #699BF7 1px;
+  }
+
+
+}
+
+
