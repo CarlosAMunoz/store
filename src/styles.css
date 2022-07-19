@@ -7,3 +7,39 @@ body {
 margin: 0;
 font-family: 'Alegreya Sans', sans-serif;
 }
+
+
+/* Botones Bootstrap  */
+.btn-success{
+  background-color: #33CF95;
+  border-radius: 0px;
+  border: 0px;
+}
+
+
+.btn-warning{
+  background-color: #E5A500;
+  border-radius: 0px;
+  border: 0px;
+  color: #fff;
+}
+
+.btn-danger{
+  background-color: #F05E47;
+  border-radius: 0px;
+  border: 0px;
+  color: #fff;
+}
+
+@media (hover: hover){
+  .btn-success:hover{
+    background-color: #3BE8A8;
+  }
+  .btn-warning{
+    background-color: #FFB307;
+
+  }
+  .btn-danger{
+    background-color: #FD674E;
+  }
+}
