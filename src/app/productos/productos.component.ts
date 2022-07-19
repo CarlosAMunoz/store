@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ProductosService } from '../services/productos.service';
 import { Productos } from '../shared/model/Productos';
 
@@ -13,7 +14,9 @@ export class ProductosComponent implements OnInit {
 
   constructor(private svcProductos:ProductosService) { }
 
+
   ngOnInit(): void {
+
     this.cargarData()
   }
 

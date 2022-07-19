@@ -31,6 +31,16 @@ font-family: 'Alegreya Sans', sans-serif;
   color: #fff;
 }
 
+
+.btn-secondary{
+  background-color: #756F7B;
+  border-radius: 0px;
+  border: 0px;
+  color: #fff;
+}
+
+
+
 @media (hover: hover){
   .btn-success:hover{
     background-color: #3BE8A8;
@@ -41,5 +51,9 @@ font-family: 'Alegreya Sans', sans-serif;
   }
   .btn-danger{
     background-color: #FD674E;
+  }
+  .btn-secondary{
+    background-color: #73707A;
+
   }
 }

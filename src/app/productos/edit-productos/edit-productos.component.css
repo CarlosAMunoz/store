@@ -1,0 +1,16 @@
+.row{
+  margin-bottom: 20px;
+}
+
+input{
+  border-radius: 0px;
+}
+
+.modal-content{
+  border-radius: 0px;
+  border: 0px;
+}
+
+h2{
+  color: #699BF7;
+}
