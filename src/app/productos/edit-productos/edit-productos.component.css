@@ -14,3 +14,8 @@ input{
 h2{
   color: #699BF7;
 }
+
+textarea{
+  height: 150px;
+  border-radius: 0px;
+}

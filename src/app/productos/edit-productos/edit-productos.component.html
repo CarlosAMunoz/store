@@ -11,31 +11,31 @@
 
       <div class="container">
         <br>
-        <form [formGroup]="dataForm">
+        <form [formGroup]="productosForm">
             <div class="row">
                 <div class="col">
-                    <input matInput placeholder="Nombre" formControlName="nombre" required class="form-control">
+                    <input matInput placeholder="Ingrese el nombre del producto" formControlName="nombre" required class="form-control">
                 </div>
             </div>
             <div class="row">
               <div class="col">
-                  <input matInput placeholder="Descripción" formControlName="descripcion" required class="form-control">
+                  <textarea  matInput placeholder="Agregue una descripción" formControlName="descripcion" required class="form-control">
+                  </textarea>
               </div>
           </div>
           <div class="row">
             <div class="col">
-                <input matInput placeholder="Precio" formControlName="precio" required class="form-control">
+                <input matInput placeholder="¿Cuál es su precio? " formControlName="precio" required class="form-control">
             </div>
         </div>
+        <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal"> Cancelar</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" mat-flat-button  (click)="guardar()"> Guardar </button>
         </form>
-    </div>
+      </div>
 
       <!-- /Contenido -->
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success" mat-flat-button (click)="guardar()"> Guardar </button>
-      </div>
+
     </div>
   </div>
 </div>

@@ -39,4 +39,14 @@ export class ProductosService {
       }
     ));
   }
+
+  eliminarProducto(id: number){
+    return this.http.delete<ResponseDto>(`${this.path}eliminar/${id}`)
+    .pipe(map(
+      value=>{
+        return value
+      }
+    ));
+  }
+
 }

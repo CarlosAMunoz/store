@@ -14,7 +14,6 @@ export class ProductosComponent implements OnInit {
 
   constructor(private svcProductos:ProductosService) { }
 
-
   ngOnInit(): void {
 
     this.cargarData()
@@ -28,5 +27,15 @@ export class ProductosComponent implements OnInit {
         this.dataSource = dataObject[2];
       }
     });
+  }
+
+  eliminar(id: number){
+    this.svcProductos.eliminarProducto(id).subscribe(value=>{
+      const dataObject = Object.values(value);
+      console.log(dataObject);
+      if (dataObject[0] == 201){
+        this.cargarData()
+      }
+    })
   }
 }
