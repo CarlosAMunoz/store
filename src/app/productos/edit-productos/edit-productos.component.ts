@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ProductosService } from 'src/app/services/productos.service';
-import { switchMap } from 'rxjs';
-import { ProductosComponent } from '../productos.component';
 
 @Component({
   selector: 'app-edit-productos',
@@ -18,7 +16,6 @@ export class EditProductosComponent implements OnInit {
 
 
   constructor(protected formBuilder: FormBuilder,
-    private activateRouter: ActivatedRoute,
     private svcProductos: ProductosService,
     private snackBar:MatSnackBar,
     private router: Router) {
@@ -31,19 +28,23 @@ export class EditProductosComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.activateRouter.params.pipe(
-      switchMap(({id})=>this.svcProductos.getProducto(id))
-    ).subscribe(value=>{
-      const dataObject = Object.values(value);
-      if (dataObject[0] == 200){
-        this.productosForm.patchValue(dataObject[2]);
-        this.snackBar.open(dataObject[1], 'Ok', {
-          horizontalPosition:'center',
-          verticalPosition:'bottom',
-          duration:5000
-        })
-      }
-    });
+    this.svcProductos.disparadorId
+    .subscribe(value =>{
+      this.svcProductos.getProducto(value)
+      .subscribe(value=>{
+        const dataObject = Object.values(value);
+        console.log(dataObject);
+        if (dataObject[0] == 200){
+
+          this.productosForm.patchValue(dataObject[2]);
+          this.snackBar.open(dataObject[1], 'Ok', {
+            horizontalPosition:'center',
+            verticalPosition:'bottom',
+            duration:5000
+          })
+        }
+      });
+    })
   }
 
 

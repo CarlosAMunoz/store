@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ResponseDto } from '../shared/model/ResponseDto';
@@ -9,6 +9,7 @@ import { ResponseDto } from '../shared/model/ResponseDto';
 })
 export class ProductosService {
 
+  @Output() disparadorId: EventEmitter<any> = new EventEmitter();
   private path =  `${environment.urlServerStore}/productos/`
 
   constructor(private http: HttpClient) { }

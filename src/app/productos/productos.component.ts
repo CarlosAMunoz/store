@@ -38,4 +38,9 @@ export class ProductosComponent implements OnInit {
       }
     })
   }
+
+  editarRegistro(id: number){
+    this.svcProductos.disparadorId.emit(id)
+  }
+
 }
