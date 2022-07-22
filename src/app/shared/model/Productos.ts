@@ -4,7 +4,9 @@ export interface Productos{
   nombre:string,
   descripcion:string,
   precio:number,
-  categorias?:[],
-  asignarCategorias?:[],
+  id_categoria:number,
+  categoria:string,
+  // asignarCategorias?:[],
   imagen:string
+  cantidadDisponible:number;
 }

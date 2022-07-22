@@ -20,6 +20,9 @@ import { MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { EditProductosComponent } from './productos/edit-productos/edit-productos.component';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { EditCategoriasComponent } from './categorias/edit-categorias/edit-categorias.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -31,7 +34,9 @@ import { EditProductosComponent } from './productos/edit-productos/edit-producto
     FooterComponent,
     ProductosComponent,
     ComprarComponent,
-    EditProductosComponent
+    EditProductosComponent,
+    CategoriasComponent,
+    EditCategoriasComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,8 @@ import { EditProductosComponent } from './productos/edit-productos/edit-producto
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

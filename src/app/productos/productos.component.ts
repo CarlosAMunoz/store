@@ -9,7 +9,7 @@ import { Productos } from '../shared/model/Productos';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-  displayedColumns: string[] = ['id','nombre', 'descripcion', 'precio', 'Acciones']
+  displayedColumns: string[] = ['id','nombre', 'descripcion', 'precio','categoria', 'cantidadDisponible', 'Acciones']
   dataSource!:Productos[]
 
   constructor(private svcProductos:ProductosService) { }

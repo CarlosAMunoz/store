@@ -2,7 +2,9 @@ import { Component, OnInit, Input} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { CategoriasService } from 'src/app/services/categorias.service';
 import { ProductosService } from 'src/app/services/productos.service';
+import { Categorias } from 'src/app/shared/model/Categorias';
 
 @Component({
   selector: 'app-edit-productos',
@@ -14,9 +16,12 @@ export class EditProductosComponent implements OnInit {
   public productosForm:FormGroup;
   private submitted: boolean = false;
 
+  public listCategorias: Categorias[]=[]
+
 
   constructor(protected formBuilder: FormBuilder,
     private svcProductos: ProductosService,
+    private svcCategoria: CategoriasService,
     private snackBar:MatSnackBar,
     private router: Router) {
       this.productosForm = this.formBuilder.group({
@@ -24,6 +29,8 @@ export class EditProductosComponent implements OnInit {
         nombre:['', [Validators.required]],
         descripcion:['', [Validators.required, Validators.maxLength(200)]],
         precio:[, [Validators.required]],
+        id_categoria:[, [Validators.required]],
+        cantidadDisponible:[, [Validators.required]],
       });
     }
 
@@ -35,16 +42,19 @@ export class EditProductosComponent implements OnInit {
         const dataObject = Object.values(value);
         console.log(dataObject);
         if (dataObject[0] == 200){
-
           this.productosForm.patchValue(dataObject[2]);
-          this.snackBar.open(dataObject[1], 'Ok', {
-            horizontalPosition:'center',
-            verticalPosition:'bottom',
-            duration:5000
-          })
         }
       });
-    })
+    });
+
+    this.svcCategoria.getCategorias().subscribe(value=>{
+      const dataObject = Object.values(value);
+      if (dataObject[0] == 200){
+        this.listCategorias = dataObject[2];
+      }
+    });
+
+
   }
 
 
@@ -58,7 +68,8 @@ export class EditProductosComponent implements OnInit {
       })
       return;
     }
-
+    console.log("Datos asignados al productosForm");
+    console.log(this.productosForm.value);
     this.svcProductos.actualizarProducto(this.productosForm.value).subscribe(
       value=>{
         const dataObject = Object.values(value);

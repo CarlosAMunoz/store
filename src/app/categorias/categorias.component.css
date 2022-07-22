@@ -32,33 +32,10 @@ table td{
 }
 
 
-.mat-column-descripcion{
-  text-align: center;
-  width: 20%;
-}
-
-.mat-column-precio{
-  text-align: center;
-  width: 5%;
-}
-
-.mat-column-categoria{
-  text-align: center;
-  width: 15%;
-}
-
-.mat-column-cantidadDisponible{
-  text-align: center;
-  width: 5%;
-}
-
 .mat-column-Acciones{
   text-align: center;
   width: 15%;
 }
-
-
-
 
 
 .btn-danger{

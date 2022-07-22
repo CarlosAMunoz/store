@@ -25,9 +25,23 @@
           </div>
           <div class="row">
             <div class="col">
-                <input matInput placeholder="¿Cuál es su precio? " formControlName="precio" required class="form-control">
+              <mat-label> Categoría </mat-label>
+              <select matInput formControlName="id_categoria">
+                  <option *ngFor="let element of listCategorias; let i = index" [value]="element.id">{{element.nombre}}</option>
+            </select>
             </div>
-        </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+                <input type="number" matInput placeholder="Cantidad disponible" formControlName="cantidadDisponible" required class="form-control">
+            </div>
+
+            <div class="col">
+              <input matInput placeholder="¿Cuál es su precio? " formControlName="precio" required class="form-control">
+            </div>
+          </div>
         <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal"> Cancelar</button>
         <button type="button" class="btn btn-success" data-bs-dismiss="modal" mat-flat-button  (click)="guardar()"> Guardar </button>
         </form>
