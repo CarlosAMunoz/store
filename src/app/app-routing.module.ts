@@ -8,7 +8,8 @@ import { ProductosComponent } from './productos/productos.component';
 const routes: Routes = [
   {
     path:'',
-    component:ComprarComponent,
+    redirectTo: 'home',
+    pathMatch: 'full'
   },
 
   {

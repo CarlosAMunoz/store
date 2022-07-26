@@ -1,1 +1,20 @@
-<p>comprar works!</p>
+<section id="productos" class="mt-4">
+  <div class="container">
+      <!-- Fila 2 -->
+      <div class="row">
+        <!-- Columna 1 -->
+        <div class="col-12  col-sm-12  col-md-3"  *ngFor="let character of listCharacters">
+          <div class="card mb-4" >
+            <img src="../../assets/imagenes/producto-sin-imagen.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <div class="badges mb-1">
+                <span class="badge"> <h3> ${{character.precio}} </h3> </span>
+              </div>
+              <h2 class="card-title mb-1"> {{character.nombre}} </h2>
+              <p class="card-text">{{character.descripcion}} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
