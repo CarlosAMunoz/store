@@ -9,7 +9,7 @@ import { Productos } from '../shared/model/Productos';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-  displayedColumns: string[] = ['id','nombre', 'descripcion', 'precio','categoria', 'cantidadDisponible', 'Acciones']
+  displayedColumns: string[] = ['id','nombre', 'descripcion', 'precio', 'id_Categoria', 'cantidadDisponible', 'Acciones']
   dataSource!:Productos[]
 
   constructor(private svcProductos:ProductosService) { }
@@ -25,6 +25,8 @@ export class ProductosComponent implements OnInit {
       console.log(dataObject);
       if (dataObject[0] == 200){
         this.dataSource = dataObject[2];
+        console.log("-----------------")
+        console.log( this.dataSource);
       }
     });
   }

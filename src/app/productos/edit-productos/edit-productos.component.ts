@@ -29,7 +29,7 @@ export class EditProductosComponent implements OnInit {
         nombre:['', [Validators.required]],
         descripcion:['', [Validators.required, Validators.maxLength(200)]],
         precio:[, [Validators.required]],
-        id_categoria:[, [Validators.required]],
+        id_Categoria:[, [Validators.required]],
         cantidadDisponible:[, [Validators.required]],
       });
     }
@@ -68,13 +68,15 @@ export class EditProductosComponent implements OnInit {
       })
       return;
     }
-    console.log("Datos asignados al productosForm");
+    console.log("Datos asignados al productosForm y enviados a DB");
     console.log(this.productosForm.value);
     this.svcProductos.actualizarProducto(this.productosForm.value).subscribe(
       value=>{
         const dataObject = Object.values(value);
         if (dataObject[0] == 201){
           this.productosForm.patchValue = dataObject[2];
+          console.log("Datos asignados al productosForm y regresados");
+          console.log(this.productosForm.value)
           this.snackBar.open('Producto agregado satisfactoriamente', 'Ok', {
             horizontalPosition:'center',
             verticalPosition:'top',

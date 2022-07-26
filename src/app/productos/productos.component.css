@@ -39,10 +39,10 @@ table td{
 
 .mat-column-precio{
   text-align: center;
-  width: 5%;
+  width: 10%;
 }
 
-.mat-column-categoria{
+.mat-column-id_Categoria{
   text-align: center;
   width: 15%;
 }
@@ -56,9 +56,6 @@ table td{
   text-align: center;
   width: 15%;
 }
-
-
-
 
 
 .btn-danger{
