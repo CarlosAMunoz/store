@@ -7,6 +7,10 @@ img{
   text-align: right;
 }
 
+div.badges.mb-1{
+  margin: 0px !important;
+}
+
 .badges span{
   color: #5f5f5f;
 }
@@ -14,5 +18,12 @@ img{
 .card{
  color: #5f5f5f;
  border-radius: 0px;
+}
 
+.btn-success{
+  width: 100%;
+}
+
+h3{
+  margin: 0;
 }

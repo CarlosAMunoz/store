@@ -27,5 +27,9 @@ export class ComprarComponent implements OnInit {
   }
 
 
+  agregarAlCarrito(id:number){
+    alert("Se agregará producto con Id " + id)
+  }
+
 
 }
