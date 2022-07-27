@@ -1,6 +1,6 @@
 export interface Categorias{
 
-  id:number,
+  id_Categoria:number,
   nombre:string,
 
 }

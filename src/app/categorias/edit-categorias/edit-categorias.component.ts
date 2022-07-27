@@ -20,7 +20,7 @@ export class EditCategoriasComponent implements OnInit {
     private snackBar:MatSnackBar,
     private router: Router) {
       this.categoriasForm = this.formBuilder.group({
-        id:[0],
+        id_Categoria:[0],
         nombre:['', [Validators.required]],
       });
     }

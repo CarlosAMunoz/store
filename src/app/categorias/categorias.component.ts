@@ -9,7 +9,7 @@ import { Categorias } from '../shared/model/Categorias';
 })
 export class CategoriasComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','nombre', 'Acciones']
+  displayedColumns: string[] = ['id_Categoria','nombre', 'Acciones']
   dataSource!:Categorias[]
 
   constructor(private svcCategorias:CategoriasService) { }
@@ -22,9 +22,10 @@ export class CategoriasComponent implements OnInit {
   cargarData(){
     this.svcCategorias.getCategorias().subscribe(value=>{
       const dataObject = Object.values(value);
-      console.log(dataObject);
       if (dataObject[0] == 200){
         this.dataSource = dataObject[2];
+        console.log("Información regresada de la DB")
+        console.log(this.dataSource);
       }
     });
   }
