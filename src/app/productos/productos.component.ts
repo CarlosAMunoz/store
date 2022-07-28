@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ProductosService } from '../services/productos.service';
+import { Categorias } from '../shared/model/Categorias';
 import { Productos } from '../shared/model/Productos';
 
 @Component({
@@ -11,6 +12,7 @@ import { Productos } from '../shared/model/Productos';
 export class ProductosComponent implements OnInit {
   displayedColumns: string[] = ['id','nombre', 'descripcion', 'precio', 'id_Categoria', 'cantidadDisponible', 'Acciones']
   dataSource!:Productos[]
+  objectCategoria!:Object;
 
   constructor(private svcProductos:ProductosService) { }
 
@@ -25,8 +27,6 @@ export class ProductosComponent implements OnInit {
       console.log(dataObject);
       if (dataObject[0] == 200){
         this.dataSource = dataObject[2];
-        console.log("-----------------")
-        console.log( this.dataSource);
       }
     });
   }

@@ -16,7 +16,9 @@ export class EditProductosComponent implements OnInit {
   public productosForm:FormGroup;
   private submitted: boolean = false;
 
-  public listCategorias: Categorias[]=[]
+  public objetoCategorias!:Categorias;
+
+  public listCategorias!:Categorias[];
 
 
   constructor(protected formBuilder: FormBuilder,
@@ -35,30 +37,34 @@ export class EditProductosComponent implements OnInit {
     }
 
   ngOnInit(): void {
+
     this.svcProductos.disparadorId
     .subscribe(value =>{
       this.svcProductos.getProducto(value)
       .subscribe(value=>{
         const dataObject = Object.values(value);
-        console.log(dataObject);
         if (dataObject[0] == 200){
           this.productosForm.patchValue(dataObject[2]);
+
         }
       });
     });
 
+
+    //LISTA LAS CATEGORIAS
     this.svcCategoria.getCategorias().subscribe(value=>{
       const dataObject = Object.values(value);
+      console.log("data Object")
+      console.log(dataObject)
       if (dataObject[0] == 200){
         this.listCategorias = dataObject[2];
       }
     });
 
-
   }
 
-
   guardar(){
+
     this.submitted = true;
     if (this.submitted && this.productosForm.invalid){
       this.snackBar.open('Faltan datos obligatorios', 'Ok', {

@@ -26,8 +26,10 @@
           <div class="row">
             <div class="col">
               <mat-label> Categoría </mat-label>
-              <select matInput formControlName="id_Categoria">
-                  <option *ngFor="let element of listCategorias; let i = index" [value]="element.id_Categoria">{{element.nombre}}</option>
+              <select matInput formControlName="id_Categoria" class="form-control">
+                  <option *ngFor="let element of listCategorias; let i = index;" [value]="element"> {{element.nombre}}
+                  </option>
+
             </select>
             </div>
           </div>

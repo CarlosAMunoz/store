@@ -33,6 +33,8 @@ export class ProductosService {
   }
 
   actualizarProducto(producto: any):Observable<ResponseDto>{
+    console.log("Enviado al servicio")
+    console.log(producto);
     return this.http.post<ResponseDto>(`${this.path}guardar`, producto)
     .pipe(map(
       value=>{
