@@ -23,6 +23,7 @@ import { EditProductosComponent } from './productos/edit-productos/edit-producto
 import { CategoriasComponent } from './categorias/categorias.component';
 import { EditCategoriasComponent } from './categorias/edit-categorias/edit-categorias.component';
 import {MatSelectModule} from '@angular/material/select';
+import { DireccionesComponent } from './direcciones/direcciones.component';
 
 
 
@@ -36,7 +37,8 @@ import {MatSelectModule} from '@angular/material/select';
     ComprarComponent,
     EditProductosComponent,
     CategoriasComponent,
-    EditCategoriasComponent
+    EditCategoriasComponent,
+    DireccionesComponent
   ],
   imports: [
     BrowserModule,
