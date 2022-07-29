@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ResponseDto } from '../model/ResponseDto';
+import { Usuario } from '../model/Usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,10 @@ export class UsuarioService {
     ));
   }
 
-  actualizarUsuario(direccion: any):Observable<ResponseDto>{
-    return this.http.post<ResponseDto>(`${this.path}guardar`, direccion)
+  actualizarUsuario(usuario: any):Observable<ResponseDto>{
+    console.log("usuariore recibido por el service")
+    console.log(usuario)
+    return this.http.post<ResponseDto>(`${this.path}guardar`, usuario)
     .pipe(map(
       value=>{
         return value

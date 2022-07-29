@@ -1,0 +1,30 @@
+
+<div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel"> Datos de la dirección </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+      <!-- Contenido -->
+
+      <div class="container">
+        <br>
+        <form [formGroup]="direccionesForm">
+            <div class="row">
+                <div class="col">
+                    <textarea matInput placeholder="Ingrese la dirección" formControlName="descripcion" required class="form-control"></textarea>
+                </div>
+            </div>
+        <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal"> Cancelar</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" mat-flat-button  (click)="guardar()"> Guardar </button>
+        </form>
+      </div>
+
+      <!-- /Contenido -->
+      </div>
+
+    </div>
+  </div>
+</div>

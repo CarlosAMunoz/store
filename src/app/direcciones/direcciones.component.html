@@ -1,15 +1,13 @@
 
 
-    <div class="header">
-      <h2> Direcciones  </h2>
-    </div>
 
     <div class="contenedor-principal">
       <br>
-      <button mat-raised-button class="btn btn-warning btn-agregar"  data-bs-toggle="modal" data-bs-target="#newModal">  <i class="fa-solid fa-plus"> </i> Agregar nueva dirección </button>
+      <button mat-raised-button class="btn btn-warning btn-agregar"  data-bs-toggle="modal" data-bs-target="#newModal" (click)="editarRegistro(0)">  <i class="fa-solid fa-plus"> </i> Agregar nueva dirección </button>
 
       <br>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
       <ng-container matColumnDef="descripcion">
           <th mat-header-cell *matHeaderCellDef> Dirección </th>
           <td mat-cell *matCellDef="let element" >{{element.descripcion}}</td>
@@ -17,16 +15,16 @@
     <ng-container matColumnDef="Acciones">
         <th mat-header-cell *matHeaderCellDef>Acción</th>
         <td mat-cell *matCellDef="let element; let i = index" class="action-link center-col-accion">
-        <button mat-raised-button class="btn btn-warning" data-bs-toggle="modal"   data-bs-target="#newModal" (click)="editarRegistro(element.id_Categoria)"> <i class="fa-regular fa-pen-to-square" ></i>
+        <button mat-raised-button class="btn btn-warning" data-bs-toggle="modal"   data-bs-target="#newModal" (click)="editarRegistro(element.id_Direccion)"> <i class="fa-regular fa-pen-to-square" ></i>
          </button>
-        <button mat-raised-button class="btn btn-danger" (click)="eliminar(element.id_Categoria)"> <i class="fa-solid fa-trash-can"></i> </button>
+        <button mat-raised-button class="btn btn-danger" (click)="eliminar(element.id_Direccion)"> <i class="fa-solid fa-trash-can"></i> </button>
         <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-
     </div>
 
-
+<!-- Bootstrap Modals  -->
+<app-edit-direcciones></app-edit-direcciones>

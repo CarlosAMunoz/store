@@ -22,7 +22,7 @@ export class UsuarioComponent implements OnInit {
     private snackBar:MatSnackBar,
     private router: Router) {
       this.usuarioForm = this.formBuilder.group({
-        id_usuario:[1],
+        id_Usuario:[1],
         nombre:['', [Validators.required]],
         email:['', [Validators.required]]
       });
@@ -44,17 +44,18 @@ export class UsuarioComponent implements OnInit {
     });
   }
 
+
   guardar(){
     this.submitted = true;
-    if (this.submitted && this.usuarioForm.invalid){
-      this.snackBar.open('Faltan datos obligatorios', 'Ok', {
-        horizontalPosition:'center',
-        verticalPosition:'bottom',
-        duration:5000
-      })
-      return;
-    }
-
+    // if (this.submitted && this.usuarioForm.invalid){
+    //   this.snackBar.open('Faltan datos obligatorios', 'Ok', {
+    //     horizontalPosition:'center',
+    //     verticalPosition:'bottom',
+    //     duration:5000
+    //   })
+    //   return;
+    // }
+    console.log("Capturado en Form")
     console.log(this.usuarioForm.value)
     this.svcUsuario.actualizarUsuario(this.usuarioForm.value).subscribe(
       value=>{
