@@ -1,0 +1,36 @@
+
+<div class="container row">
+
+  <div class="col principal">
+    <div class="header">
+      <h2> Información de Usuario  </h2>
+    </div>
+
+    <form [formGroup]="usuarioForm">
+        <div class="row">
+          <div class="col">
+              <input type="number" matInput placeholder="Ingrese su nombre" formControlName="id_usuario" required class="form-control">
+          </div>
+        </div>
+          <div class="row"  >
+              <div class="col">
+                  <input matInput placeholder="Ingrese su nombre" formControlName="nombre" required class="form-control">
+              </div>
+          </div>
+        <div class="row">
+          <div class="col">
+              <input  matInput placeholder="¿Cuál es su e-mail?" formControlName="email" required class="form-control">
+          </div>
+        </div>
+      <button type="button" class="btn btn-success"  mat-flat-button (click)="guardar()"> Actualizar </button>
+    </form>
+
+  </div>
+
+
+  <!-- Inicia Direcciones -->
+  <div class="col principal">
+<app-direcciones></app-direcciones>
+  </div>
+
+</div>

@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { ProductosService } from 'src/app/services/productos.service';
-import { Categorias } from 'src/app/shared/model/Categorias';
+import { Categorias } from 'src/app/model/Categorias';
 
 @Component({
   selector: 'app-edit-productos',

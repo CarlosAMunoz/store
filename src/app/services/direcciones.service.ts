@@ -7,14 +7,15 @@ import { ResponseDto } from '../model/ResponseDto';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductosService {
+export class DireccionesService {
 
   @Output() disparadorId: EventEmitter<any> = new EventEmitter();
-  private path =  `${environment.urlServerStore}/productos/`
+
+  private path =  `${environment.urlServerStore}/direcciones/`
 
   constructor(private http: HttpClient) { }
 
-  getProductos(): Observable<ResponseDto>{
+  getDirecciones(): Observable<ResponseDto>{
     return this.http.get<ResponseDto>(`${this.path}todos`)
       .pipe(map(
         value=>{
@@ -23,7 +24,7 @@ export class ProductosService {
       ));
   }
 
-  getProducto(id:number){
+  getDireccion(id:number){
     return this.http.get<ResponseDto>(`${this.path}buscarporid/${id}`)
     .pipe(map(
       value=>{
@@ -32,10 +33,8 @@ export class ProductosService {
     ));
   }
 
-  actualizarProducto(producto: any):Observable<ResponseDto>{
-    console.log("Enviado al servicio")
-    console.log(producto);
-    return this.http.post<ResponseDto>(`${this.path}guardar`, producto)
+  actualizarDireccion(direccion: any):Observable<ResponseDto>{
+    return this.http.post<ResponseDto>(`${this.path}guardar`, direccion)
     .pipe(map(
       value=>{
         return value
@@ -43,7 +42,7 @@ export class ProductosService {
     ));
   }
 
-  eliminarProducto(id: number){
+  eliminarDireccion(id: number){
     return this.http.delete<ResponseDto>(`${this.path}eliminar/${id}`)
     .pipe(map(
       value=>{
@@ -51,5 +50,4 @@ export class ProductosService {
       }
     ));
   }
-
 }

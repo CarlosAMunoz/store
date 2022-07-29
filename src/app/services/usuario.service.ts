@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ResponseDto } from '../model/ResponseDto';
@@ -7,15 +7,13 @@ import { ResponseDto } from '../model/ResponseDto';
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriasService {
+export class UsuarioService {
 
-  @Output() disparadorId: EventEmitter<any> = new EventEmitter();
-
-  private path =  `${environment.urlServerStore}/categorias/`
+  private path =  `${environment.urlServerStore}/usuario/`
 
   constructor(private http: HttpClient) { }
 
-  getCategorias(): Observable<ResponseDto>{
+  getUsuarios(): Observable<ResponseDto>{
     return this.http.get<ResponseDto>(`${this.path}todos`)
       .pipe(map(
         value=>{
@@ -24,7 +22,7 @@ export class CategoriasService {
       ));
   }
 
-  getCategoria(id:number){
+  getUsuario(id:number){
     return this.http.get<ResponseDto>(`${this.path}buscarporid/${id}`)
     .pipe(map(
       value=>{
@@ -33,17 +31,8 @@ export class CategoriasService {
     ));
   }
 
-  actualizarCategoria(categoria: any):Observable<ResponseDto>{
-    return this.http.post<ResponseDto>(`${this.path}guardar`, categoria)
-    .pipe(map(
-      value=>{
-        return value
-      }
-    ));
-  }
-
-  eliminarCategoria(id: number){
-    return this.http.delete<ResponseDto>(`${this.path}eliminar/${id}`)
+  actualizarUsuario(direccion: any):Observable<ResponseDto>{
+    return this.http.post<ResponseDto>(`${this.path}guardar`, direccion)
     .pipe(map(
       value=>{
         return value

@@ -4,6 +4,7 @@ import { CategoriasComponent } from './categorias/categorias.component';
 import { ComprarComponent } from './comprar/comprar.component';
 import { EditProductosComponent } from './productos/edit-productos/edit-productos.component';
 import { ProductosComponent } from './productos/productos.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'categorias',
     component:CategoriasComponent
+  },
+  {
+    path: 'usuario/:id',
+    component:UsuarioComponent
   }
 
 ];

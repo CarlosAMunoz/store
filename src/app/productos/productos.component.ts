@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { ProductosService } from '../services/productos.service';
-import { Categorias } from '../shared/model/Categorias';
-import { Productos } from '../shared/model/Productos';
+import { Productos } from '../model/Productos';
 
 @Component({
   selector: 'app-productos',
