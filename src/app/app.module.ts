@@ -26,6 +26,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { DireccionesComponent } from './direcciones/direcciones.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { EditDireccionesComponent } from './direcciones/edit-direcciones/edit-direcciones.component';
+import { CarritoComponent } from './carrito/carrito.component';
 
 
 
@@ -42,7 +43,8 @@ import { EditDireccionesComponent } from './direcciones/edit-direcciones/edit-di
     EditCategoriasComponent,
     DireccionesComponent,
     UsuarioComponent,
-    EditDireccionesComponent
+    EditDireccionesComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
