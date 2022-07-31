@@ -10,11 +10,14 @@ table{
   margin: 10px;
   margin-top: 0px;
 }
+.editar{
+  margin: 5px;
+}
 
 
 .mat-column-descripcion{
   text-align: center;
-  width: 75%;
+  width: 60%;
 }
 .mat-column-Acciones{
   text-align: center;

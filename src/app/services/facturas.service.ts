@@ -1,21 +1,19 @@
 import { HttpClient } from '@angular/common/http';
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Factura } from '../model/Factura';
 import { ResponseDto } from '../model/ResponseDto';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CarritoService {
+export class FacturasService {
 
-  @Output() disparadorId: EventEmitter<any> = new EventEmitter();
-
-  private path =  `${environment.urlServerStore}/carrito/`
+  private path =  `${environment.urlServerStore}/facturas/`
 
   constructor(private http: HttpClient) { }
-
-  getCarritos(): Observable<ResponseDto>{
+  getFacturas(): Observable<ResponseDto>{
     return this.http.get<ResponseDto>(`${this.path}todos`)
       .pipe(map(
         value=>{
@@ -24,7 +22,7 @@ export class CarritoService {
       ));
   }
 
-  getCarrito(id:number){
+  getFactura(id:number){
     return this.http.get<ResponseDto>(`${this.path}buscarporid/${id}`)
     .pipe(map(
       value=>{
@@ -33,8 +31,10 @@ export class CarritoService {
     ));
   }
 
-  actualizarCarrito(carrito: any):Observable<ResponseDto>{
-    return this.http.post<ResponseDto>(`${this.path}guardar`, carrito)
+  actualizarFactura(factura: any):Observable<ResponseDto>{
+    console.log("Enviado al servicio")
+    console.log(factura);
+    return this.http.post<ResponseDto>(`${this.path}guardar`, factura)
     .pipe(map(
       value=>{
         return value
@@ -42,7 +42,7 @@ export class CarritoService {
     ));
   }
 
-  eliminarCarrito(id: number){
+  eliminarFactura(id: number){
     return this.http.delete<ResponseDto>(`${this.path}eliminar/${id}`)
     .pipe(map(
       value=>{
@@ -50,7 +50,5 @@ export class CarritoService {
       }
     ));
   }
-
-
 
 }

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ANALYZE_FOR_ENTRY_COMPONENTS, Component, OnInit } from '@angular/core';
 import { Carrito } from '../model/Carrito';
+import { Factura } from '../model/Factura';
 import { CarritoService } from '../services/carrito.service';
+import { FacturasService } from '../services/facturas.service';
 
 @Component({
   selector: 'app-carrito',
@@ -9,11 +11,11 @@ import { CarritoService } from '../services/carrito.service';
 })
 export class CarritoComponent implements OnInit {
 
-
-  displayedColumns: string[] = ['nombre_Producto', 'precio', 'cantidad', 'Acciones']
+  displayedColumns: string[] = ['nombre_Producto', 'cantidad', 'precio', 'Acciones'];
   dataSource!:Carrito[]
+  date:any;
 
-  constructor(private svcCarrito:CarritoService) { }
+  constructor(private svcCarrito:CarritoService, private svcFactura:FacturasService) { }
 
   ngOnInit(): void {
 
@@ -41,7 +43,28 @@ export class CarritoComponent implements OnInit {
     })
   }
 
-  editarRegistro(id: number){
-    this.svcCarrito.disparadorId.emit(id)
+
+
+  comprarCarrito(){
+
+    this.date=new Date();
+    let factura:any={
+      id_Usuario:{
+        id_Usuario:this.dataSource[0].id_Usuario,
+      },
+      nombre_Usuario:'Pendiente',
+      total:500000,
+      fecha_Compra:this.date
+    }
+
+    this.svcFactura.actualizarFactura(factura).subscribe(
+      value=>{
+        const dataObject = Object.values(value);
+        if (dataObject[0] == 201){
+            alert("Agregado a la factura")
+          }
+      });
+
   }
+
 }

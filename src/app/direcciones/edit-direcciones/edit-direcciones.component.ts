@@ -13,7 +13,7 @@ export class EditDireccionesComponent implements OnInit {
 
   public direccionesForm:FormGroup;
   private submitted: boolean = false;
-
+  disparador!:any;
 
   constructor(protected formBuilder: FormBuilder,
     private svcDirecciones: DireccionesService,
@@ -26,6 +26,7 @@ export class EditDireccionesComponent implements OnInit {
     }
 
   ngOnInit(): void {
+
     this.svcDirecciones.disparadorId
     .subscribe(value =>{
       this.svcDirecciones.getDireccion(value)
@@ -50,8 +51,16 @@ export class EditDireccionesComponent implements OnInit {
       })
       return;
     }
-    console.log(this.direccionesForm.value)
-    this.svcDirecciones.actualizarDireccion(this.direccionesForm.value).subscribe(
+
+    let newDireccion:any={
+      id_Direccion:this.direccionesForm.value.id_Direccion,
+      descripcion:this.direccionesForm.value.descripcion,
+      id_Usuario:{
+        id_Usuario:1
+      }
+    }
+
+    this.svcDirecciones.actualizarDireccion(newDireccion).subscribe(
       value=>{
         const dataObject = Object.values(value);
         if (dataObject[0] == 201){

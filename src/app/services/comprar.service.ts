@@ -17,7 +17,7 @@ export class ComprarService {
     carrito.id_Producto = producto.id;
     carrito.id_Usuario = 1;
     carrito.cantidad = cantidad;
-    carrito.nombre_Producto = producto.nombre;
+    carrito.nombre_Producto = producto.nombre_Producto;
     carrito.precio = producto.precio;
 
     return carrito;

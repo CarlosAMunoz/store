@@ -67,6 +67,7 @@ export class ComprarComponent implements OnInit {
 
 
   agregarAlCarrito(producto:Productos){
+
     console.log(producto, this.cantidadForm.value.cantidad);
     let carrito = this.svcComprar.setCarrito(producto,  this.cantidadForm.value.cantidad)
     this.svcCarrito.actualizarCarrito(carrito).subscribe(
@@ -100,30 +101,5 @@ export class ComprarComponent implements OnInit {
   }
 
 
-  incrementValue(e:any) {
-    console.log(e)
-    e.preventDefault();
-    var fieldName = e.target.data.field;
-    var parent = (e.target).closest('div');
-    var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
 
-    if (!isNaN(currentVal)) {
-        parent.find('input[name=' + fieldName + ']').val(currentVal + 1);
-    } else {
-        parent.find('input[name=' + fieldName + ']').val(0);
-    }
-}
-
-   decrementValue(e:any) {
-        e.preventDefault();
-        var fieldName = (e.target).data('field');
-        var parent = (e.target).closest('div');
-        var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
-
-        if (!isNaN(currentVal) && currentVal > 0) {
-            parent.find('input[name=' + fieldName + ']').val(currentVal - 1);
-        } else {
-            parent.find('input[name=' + fieldName + ']').val(0);
-        }
-    }
 }

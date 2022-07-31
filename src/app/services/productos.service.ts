@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Productos } from '../model/Productos';
 import { ResponseDto } from '../model/ResponseDto';
 
 @Injectable({
@@ -42,7 +43,7 @@ export class ProductosService {
   }
 
 
-  actualizarProducto(producto: any):Observable<ResponseDto>{
+  actualizarProducto(producto: Productos):Observable<ResponseDto>{
     console.log("Enviado al servicio")
     console.log(producto);
     return this.http.post<ResponseDto>(`${this.path}guardar`, producto)

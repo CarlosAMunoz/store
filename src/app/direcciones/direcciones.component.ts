@@ -42,5 +42,6 @@ export class DireccionesComponent implements OnInit {
 
   editarRegistro(id: number){
     this.svcDirecciones.disparadorId.emit(id)
+
   }
 }

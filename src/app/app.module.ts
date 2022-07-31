@@ -27,6 +27,7 @@ import { DireccionesComponent } from './direcciones/direcciones.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { EditDireccionesComponent } from './direcciones/edit-direcciones/edit-direcciones.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { FacturasComponent } from './facturas/facturas.component';
 
 
 
@@ -44,7 +45,8 @@ import { CarritoComponent } from './carrito/carrito.component';
     DireccionesComponent,
     UsuarioComponent,
     EditDireccionesComponent,
-    CarritoComponent
+    CarritoComponent,
+    FacturasComponent
   ],
   imports: [
     BrowserModule,

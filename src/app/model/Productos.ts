@@ -3,7 +3,7 @@ import { Categorias } from "./Categorias";
 export interface Productos{
 
   id:number,
-  nombre:string,
+  nombre_Producto:string,
   descripcion:string,
   precio:number,
   id_Categoria:Categorias,

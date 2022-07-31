@@ -18,6 +18,8 @@ export class EditProductosComponent implements OnInit {
   public listCategorias!:Categorias[];
 
 
+
+
   constructor(protected formBuilder: FormBuilder,
     private svcProductos: ProductosService,
     private svcCategoria: CategoriasService,
@@ -25,29 +27,15 @@ export class EditProductosComponent implements OnInit {
     private router: Router) {
       this.productosForm = this.formBuilder.group({
         id:[0],
-        nombre:['', [Validators.required]],
+        nombre_Producto:['', [Validators.required]],
         descripcion:['', [Validators.required, Validators.maxLength(200)]],
         precio:[, [Validators.required]],
-        id_Categoria:[, [Validators.required]],
+        id_Categoria:[0, [Validators.required]],
         cantidadDisponible:[, [Validators.required]],
       });
     }
 
   ngOnInit(): void {
-
-    this.svcProductos.disparadorId
-    .subscribe(value =>{
-      this.svcProductos.getProducto(value)
-      .subscribe(value=>{
-        const dataObject = Object.values(value);
-        if (dataObject[0] == 200){
-          this.productosForm.patchValue(dataObject[2]);
-          console.log("producto traído")
-          console.log(this.productosForm.value);
-        }
-      });
-    });
-
 
     //LISTA LAS CATEGORIAS
     this.svcCategoria.getCategorias().subscribe(value=>{
@@ -59,6 +47,23 @@ export class EditProductosComponent implements OnInit {
       }
     });
 
+
+    this.svcProductos.disparadorId
+    .subscribe(value =>{
+      console.log("value traido del disparador")
+      console.log(value);
+      this.svcProductos.getProducto(value)
+      .subscribe(value=>{
+        const dataObject = Object.values(value);
+        if (dataObject[0] == 200){
+          this.productosForm.patchValue(dataObject[2]);
+          let productoTraido:any;
+          productoTraido = dataObject[2];
+          this.productosForm.patchValue(productoTraido.id_Categoria)
+
+        }
+      });
+    });
   }
 
   guardar(){
@@ -74,7 +79,8 @@ export class EditProductosComponent implements OnInit {
     }
 
     let productos:any={
-      nombre:'',
+      id:null,
+      nombre_Producto:'',
       descripcion:'',
       precio:0,
       id_Categoria:{
@@ -83,16 +89,16 @@ export class EditProductosComponent implements OnInit {
       },
       cantidadDisponible:0,
     }
-    productos.nombre = this.productosForm.value.nombre;
+    productos.id = this.productosForm.value.id
+    productos.nombre_Producto = this.productosForm.value.nombre_Producto;
     productos.descripcion = this.productosForm.value.descripcion;
     productos.precio = this.productosForm.value.precio;
     productos.id_Categoria.id_Categoria = this.productosForm.value.id_Categoria;
     productos.cantidadDisponible = this.productosForm.value.cantidadDisponible;
 
+    console.log("Datos enviados para guardar");
     console.log(productos)
 
-    console.log("Datos asignados al productosForm");
-    console.log(this.productosForm.value);
     this.svcProductos.actualizarProducto(productos).subscribe(
       value=>{
         const dataObject = Object.values(value);

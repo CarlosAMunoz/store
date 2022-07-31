@@ -1,7 +1,9 @@
+import { Usuario } from "./Usuario";
+
 export interface Direcciones{
 
   id_direccion:number,
   descripcion:string,
-  id_usaurio:number,
+  id_usaurio:Usuario,
 
 }
