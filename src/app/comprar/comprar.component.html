@@ -4,17 +4,17 @@
 <section id="productos" class="mt-4">
 
   <div class="container">
-
+    <form [formGroup]="dataForm">
       <div class="row first-row">
         <div class="col">
           <mat-label class="filtrar-label"> Filtrar por:  </mat-label>
-          <select matInput formControlName="id_Categoria" class="filtro"  (change)="filtrar($event)">
-            <option> Todos </option>
+          <select matInput formControlName="id_Categoria" class="filtro"   (change)="filtrar($event)">
+            <option [value]="-1" selected> Todos </option>
             <option *ngFor="let element of listCategorias; let i = index;" [value]="element.id_Categoria" > {{element.nombre}}</option>
         </select>
         </div>
       </div>
-
+    </form>
 
       <div class="row">
 
@@ -27,43 +27,14 @@
               </div>
               <h2 class="card-title mb-1"> {{character.nombre}} </h2>
               <p class="card-text">{{character.descripcion}} </p>
-              <button type="button" class="btn btn-success" (click)="agregarAlCarrito(character)"> Agregar al carrito </button>
+              <form [formGroup]="cantidadForm">
+              <label> Cantidad </label>
+              <input type="number" placeholder="¿Cuántos comprará?"  formControlName="cantidad" class="number-cantidad">
+              <button type="button" class="btn btn-success" (click)="agregarAlCarrito(character)"> <i class="fa-solid fa-cart-shopping"></i>  Agregar al carrito </button>
+              </form>
             </div>
           </div>
         </div>
       </div>
   </div>
 </section>
-
-
-<!-- Modal Cantidad
-
-<div class="modal fade" id="cantidadModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLabel"> Agregar al carrito </h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-
-
-      <div class="container">
-        <br>
-            <div class="row">
-                <div class="col">
-                  {{character.nombre}}
-                </div>
-            </div>
-        <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal"> Cancelar</button>
-        <button type="button" class="btn btn-success cantidad" data-bs-dismiss="modal" mat-flat-button > Guardar </button>
-      </div>
-
-
-      </div>
-
-    </div>
-  </div>
-</div> -->
-
-

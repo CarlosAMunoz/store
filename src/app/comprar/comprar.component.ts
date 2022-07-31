@@ -5,6 +5,10 @@ import { CarritoService } from '../services/carrito.service';
 import { ComprarService } from '../services/comprar.service';
 import { Categorias } from '../model/Categorias';
 import { CategoriasService } from '../services/categorias.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HeaderComponent } from '../shared/header/header.component';
+
 
 @Component({
   selector: 'app-comprar',
@@ -12,10 +16,28 @@ import { CategoriasService } from '../services/categorias.service';
   styleUrls: ['./comprar.component.css']
 })
 export class ComprarComponent implements OnInit {
-  listCharacters:Productos[]=[];
+  listCharacters:any[]=[];
   listCategorias:Categorias[]=[];
 
-  constructor(private svcProductos:ProductosService, private svcCarrito:CarritoService, private svcComprar:ComprarService, private svcCategoria:CategoriasService) { }
+  public dataForm:FormGroup;
+  public cantidadForm:FormGroup;
+
+  constructor(private svcProductos:ProductosService,
+    private svcCarrito:CarritoService,
+    private svcComprar:ComprarService,
+    private svcCategoria:CategoriasService,
+    protected formBuilder: FormBuilder,
+    private router: Router){
+      this.dataForm = this.formBuilder.group({
+        id_Categoria:['-1']
+      });
+
+      this.cantidadForm = this.formBuilder.group({
+        cantidad:['1']
+      });
+    }
+
+
   ngOnInit(): void {
 
    //LISTA LAS CATEGORIAS
@@ -45,13 +67,16 @@ export class ComprarComponent implements OnInit {
 
 
   agregarAlCarrito(producto:Productos){
-    console.log(producto);
-    let carrito = this.svcComprar.setCarrito(producto)
+    console.log(producto, this.cantidadForm.value.cantidad);
+    let carrito = this.svcComprar.setCarrito(producto,  this.cantidadForm.value.cantidad)
     this.svcCarrito.actualizarCarrito(carrito).subscribe(
       value=>{
         const dataObject = Object.values(value);
         if (dataObject[0] == 201){
-          alert('Producto agregado al carrito satisfactoriamente')
+          alert("Producto agregado al carrito")
+          // this.router.navigateByUrl('/header', {skipLocationChange: false}).then(() => {
+          //   this.router.navigate(['/header']);
+          // });
         }
       }
     )
@@ -59,18 +84,46 @@ export class ComprarComponent implements OnInit {
 
 
   filtrar(e:any){
-    console.log("evento capturado");
     console.log(e.target.value);
-    this.svcProductos.getProductosByCategoria(e.target.value)
-    .subscribe(value=>{
-      const dataObject = Object.values(value);
-      if (dataObject[0] == 200){
-        this.listCharacters = dataObject[2];
-        console.log( this.listCharacters);
-      }
-    });
-
-
+    if (e.target.value == -1){
+      this.cargarData();
+    }else{
+      this.svcProductos.getProductosByCategoria(e.target.value)
+      .subscribe(value=>{
+        const dataObject = Object.values(value);
+        if (dataObject[0] == 200){
+          this.listCharacters = dataObject[2];
+          console.log( this.listCharacters);
+        }
+      });
+    }
   }
 
+
+  incrementValue(e:any) {
+    console.log(e)
+    e.preventDefault();
+    var fieldName = e.target.data.field;
+    var parent = (e.target).closest('div');
+    var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+
+    if (!isNaN(currentVal)) {
+        parent.find('input[name=' + fieldName + ']').val(currentVal + 1);
+    } else {
+        parent.find('input[name=' + fieldName + ']').val(0);
+    }
+}
+
+   decrementValue(e:any) {
+        e.preventDefault();
+        var fieldName = (e.target).data('field');
+        var parent = (e.target).closest('div');
+        var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+
+        if (!isNaN(currentVal) && currentVal > 0) {
+            parent.find('input[name=' + fieldName + ']').val(currentVal - 1);
+        } else {
+            parent.find('input[name=' + fieldName + ']').val(0);
+        }
+    }
 }

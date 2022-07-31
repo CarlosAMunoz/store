@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ComprarService {
 
 
-  setCarrito(producto:any){
+  setCarrito(producto:any, cantidad:number){
     let carrito:any= {
       id_Producto: 0,
       id_Usuario: 0,
@@ -16,7 +16,7 @@ export class ComprarService {
     };
     carrito.id_Producto = producto.id;
     carrito.id_Usuario = 1;
-    carrito.cantidad = 20;
+    carrito.cantidad = cantidad;
     carrito.nombre_Producto = producto.nombre;
     carrito.precio = producto.precio;
 

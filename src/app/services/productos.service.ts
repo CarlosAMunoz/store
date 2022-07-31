@@ -42,7 +42,6 @@ export class ProductosService {
   }
 
 
-
   actualizarProducto(producto: any):Observable<ResponseDto>{
     console.log("Enviado al servicio")
     console.log(producto);

@@ -5,6 +5,7 @@ import { CategoriasComponent } from './categorias/categorias.component';
 import { ComprarComponent } from './comprar/comprar.component';
 import { EditProductosComponent } from './productos/edit-productos/edit-productos.component';
 import { ProductosComponent } from './productos/productos.component';
+import { HeaderComponent } from './shared/header/header.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 
 const routes: Routes = [
@@ -37,7 +38,14 @@ const routes: Routes = [
   {
     path: 'carrito',
     component:CarritoComponent
+  },
+
+  {
+    path:'header',
+    component:HeaderComponent,
+
   }
+
 
 
 ];
