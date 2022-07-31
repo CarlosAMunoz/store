@@ -1,8 +1,23 @@
+
+
+
 <section id="productos" class="mt-4">
+
   <div class="container">
-      <!-- Fila 2 -->
+
+      <div class="row first-row">
+        <div class="col">
+          <mat-label class="filtrar-label"> Filtrar por:  </mat-label>
+          <select matInput formControlName="id_Categoria" class="filtro"  (change)="filtrar($event)">
+            <option> Todos </option>
+            <option *ngFor="let element of listCategorias; let i = index;" [value]="element.id_Categoria" > {{element.nombre}}</option>
+        </select>
+        </div>
+      </div>
+
+
       <div class="row">
-        <!-- Columna 1 -->
+
         <div class="col-12  col-sm-12  col-md-3"  *ngFor="let character of listCharacters">
           <div class="card mb-4" >
             <img src="../../assets/imagenes/producto-sin-imagen.png" class="card-img-top" alt="...">
@@ -19,3 +34,36 @@
       </div>
   </div>
 </section>
+
+
+<!-- Modal Cantidad
+
+<div class="modal fade" id="cantidadModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel"> Agregar al carrito </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+
+
+      <div class="container">
+        <br>
+            <div class="row">
+                <div class="col">
+                  {{character.nombre}}
+                </div>
+            </div>
+        <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal"> Cancelar</button>
+        <button type="button" class="btn btn-success cantidad" data-bs-dismiss="modal" mat-flat-button > Guardar </button>
+      </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div> -->
+
+

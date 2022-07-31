@@ -1,0 +1,13 @@
+.modal-content{
+  border-radius: 0px;
+  border: 0px;
+}
+
+.modal-title{
+  color: #699BF7;
+}
+
+textarea{
+  border-radius: 0px;
+  margin-bottom:20px
+}

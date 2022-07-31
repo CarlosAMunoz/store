@@ -16,3 +16,7 @@ input{
 .btn-success{
   margin: 10px;
 }
+
+input{
+  color: gray
+}

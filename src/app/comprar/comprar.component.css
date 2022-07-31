@@ -27,3 +27,32 @@ div.badges.mb-1{
 h3{
   margin: 0;
 }
+
+.cantidad{
+  width: 100px;
+}
+
+.modal-content{
+  border-radius: 0px;
+  border: 0px;
+}
+
+.modal-title{
+  color: #699BF7;
+}
+
+
+.filtrar-label{
+  font-size: 15px;
+  color: #fff;
+}
+
+.filtro{
+  min-width: 150px;
+  font-size: 14px;
+  color: #5f5f5f;
+}
+
+.first-row{
+  margin-bottom: 20px;
+}

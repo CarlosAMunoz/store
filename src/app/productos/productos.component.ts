@@ -40,6 +40,7 @@ export class ProductosComponent implements OnInit {
   }
 
   editarRegistro(id: number){
+    alert("se recibió id " + id)
     this.svcProductos.disparadorId.emit(id)
   }
 

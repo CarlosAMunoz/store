@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../services/productos.service';
 import { Productos } from '../model/Productos';
-import { Carrito } from '../model/Carrito';
-import { CarritoComponent } from '../carrito/carrito.component';
+import { CarritoService } from '../services/carrito.service';
+import { ComprarService } from '../services/comprar.service';
+import { Categorias } from '../model/Categorias';
+import { CategoriasService } from '../services/categorias.service';
 
 @Component({
   selector: 'app-comprar',
@@ -10,11 +12,24 @@ import { CarritoComponent } from '../carrito/carrito.component';
   styleUrls: ['./comprar.component.css']
 })
 export class ComprarComponent implements OnInit {
-  listCharacters:Productos[]=[]
+  listCharacters:Productos[]=[];
+  listCategorias:Categorias[]=[];
 
-
-  constructor(private svcProductos:ProductosService) { }
+  constructor(private svcProductos:ProductosService, private svcCarrito:CarritoService, private svcComprar:ComprarService, private svcCategoria:CategoriasService) { }
   ngOnInit(): void {
+
+   //LISTA LAS CATEGORIAS
+    this.svcCategoria.getCategorias().subscribe(value=>{
+      const dataObject = Object.values(value);
+      console.log("data Object")
+      console.log(dataObject)
+      if (dataObject[0] == 200){
+        this.listCategorias = dataObject[2];
+      }
+    });
+
+
+
     this.cargarData()
   }
 
@@ -30,33 +45,32 @@ export class ComprarComponent implements OnInit {
 
 
   agregarAlCarrito(producto:Productos){
-    alert("Se agregará producto con Id " + producto)
     console.log(producto);
-
-
-    let carrito:{
-      id_Producto:number,
-      id_Usuario:number
-      cantidad:number,
-      nombre_Producto:string
-      precio:number
-    } = {
-      id_Producto: 0,
-      id_Usuario: 0,
-      cantidad: 0,
-      nombre_Producto: '',
-      precio: 0
-    };
-
-
-    carrito.id_Producto = producto.id;
-    carrito.id_Usuario = 1;
-    carrito.cantidad = 20;
-    carrito.nombre_Producto = producto.nombre;
-    carrito.precio = producto.precio;
-
-    console.log(carrito);
+    let carrito = this.svcComprar.setCarrito(producto)
+    this.svcCarrito.actualizarCarrito(carrito).subscribe(
+      value=>{
+        const dataObject = Object.values(value);
+        if (dataObject[0] == 201){
+          alert('Producto agregado al carrito satisfactoriamente')
+        }
+      }
+    )
   }
 
+
+  filtrar(e:any){
+    console.log("evento capturado");
+    console.log(e.target.value);
+    this.svcProductos.getProductosByCategoria(e.target.value)
+    .subscribe(value=>{
+      const dataObject = Object.values(value);
+      if (dataObject[0] == 200){
+        this.listCharacters = dataObject[2];
+        console.log( this.listCharacters);
+      }
+    });
+
+
+  }
 
 }

@@ -10,7 +10,7 @@ import { CarritoService } from '../services/carrito.service';
 export class CarritoComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['id_Producto', 'precio', 'cantidad', 'Acciones']
+  displayedColumns: string[] = ['nombre_Producto', 'precio', 'cantidad', 'Acciones']
   dataSource!:Carrito[]
 
   constructor(private svcCarrito:CarritoService) { }

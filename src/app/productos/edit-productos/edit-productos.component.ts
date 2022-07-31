@@ -15,9 +15,6 @@ export class EditProductosComponent implements OnInit {
 
   public productosForm:FormGroup;
   private submitted: boolean = false;
-
-  public objetoCategorias!:Categorias;
-
   public listCategorias!:Categorias[];
 
 
@@ -45,7 +42,8 @@ export class EditProductosComponent implements OnInit {
         const dataObject = Object.values(value);
         if (dataObject[0] == 200){
           this.productosForm.patchValue(dataObject[2]);
-
+          console.log("producto traído")
+          console.log(this.productosForm.value);
         }
       });
     });
@@ -74,9 +72,28 @@ export class EditProductosComponent implements OnInit {
       })
       return;
     }
-    console.log("Datos asignados al productosForm y enviados a DB");
+
+    let productos:any={
+      nombre:'',
+      descripcion:'',
+      precio:0,
+      id_Categoria:{
+        id_Categoria:0,
+        nombre:''
+      },
+      cantidadDisponible:0,
+    }
+    productos.nombre = this.productosForm.value.nombre;
+    productos.descripcion = this.productosForm.value.descripcion;
+    productos.precio = this.productosForm.value.precio;
+    productos.id_Categoria.id_Categoria = this.productosForm.value.id_Categoria;
+    productos.cantidadDisponible = this.productosForm.value.cantidadDisponible;
+
+    console.log(productos)
+
+    console.log("Datos asignados al productosForm");
     console.log(this.productosForm.value);
-    this.svcProductos.actualizarProducto(this.productosForm.value).subscribe(
+    this.svcProductos.actualizarProducto(productos).subscribe(
       value=>{
         const dataObject = Object.values(value);
         if (dataObject[0] == 201){

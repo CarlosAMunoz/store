@@ -32,6 +32,17 @@ export class ProductosService {
     ));
   }
 
+  getProductosByCategoria(categoria:number){
+    return this.http.get<ResponseDto>(`${this.path}buscarporcategoria/${categoria}`)
+    .pipe(map(
+      value=>{
+        return value
+      }
+    ));
+  }
+
+
+
   actualizarProducto(producto: any):Observable<ResponseDto>{
     console.log("Enviado al servicio")
     console.log(producto);
@@ -51,5 +62,7 @@ export class ProductosService {
       }
     ));
   }
+
+
 
 }
