@@ -19,7 +19,6 @@ export class EditProductosComponent implements OnInit {
 
 
 
-
   constructor(protected formBuilder: FormBuilder,
     private svcProductos: ProductosService,
     private svcCategoria: CategoriasService,
@@ -88,8 +87,11 @@ export class EditProductosComponent implements OnInit {
         nombre:''
       },
       cantidadDisponible:0,
+      imagen:''
     }
-    productos.id = this.productosForm.value.id
+
+
+    productos.id = this.productosForm.value.id;
     productos.nombre_Producto = this.productosForm.value.nombre_Producto;
     productos.descripcion = this.productosForm.value.descripcion;
     productos.precio = this.productosForm.value.precio;
@@ -97,7 +99,8 @@ export class EditProductosComponent implements OnInit {
     productos.cantidadDisponible = this.productosForm.value.cantidadDisponible;
 
     console.log("Datos enviados para guardar");
-    console.log(productos)
+
+
 
     this.svcProductos.actualizarProducto(productos).subscribe(
       value=>{
@@ -116,6 +119,13 @@ export class EditProductosComponent implements OnInit {
           });
         }
       }
-    )
+    );
   }
+
+
+  onUpload(){
+    alert ("subir");
+  }
+
+
 }

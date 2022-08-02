@@ -2,19 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Factura } from '../model/Factura';
 import { ResponseDto } from '../model/ResponseDto';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FacturasService {
+export class FacturaProductoService {
 
-  private path =  `${environment.urlServerStore}/facturas/`
+  private path =  `${environment.urlServerStore}/factura_producto/`
 
   constructor(private http: HttpClient) { }
-
-  getFacturas(): Observable<ResponseDto>{
+  getFacturas_Producto(): Observable<ResponseDto>{
     return this.http.get<ResponseDto>(`${this.path}todos`)
       .pipe(map(
         value=>{
@@ -23,7 +21,19 @@ export class FacturasService {
       ));
   }
 
-  getFactura(id:number){
+  getFacturas_ProductoByFactura(): Observable<ResponseDto>{
+    return this.http.get<ResponseDto>(`${this.path}buscarporfactura`)
+      .pipe(map(
+        value=>{
+          return value
+        }
+      ));
+  }
+
+
+
+
+  getFactura_Producto(id:number){
     return this.http.get<ResponseDto>(`${this.path}buscarporid/${id}`)
     .pipe(map(
       value=>{
@@ -32,10 +42,10 @@ export class FacturasService {
     ));
   }
 
-  actualizarFactura(factura: Factura):Observable<ResponseDto>{
-    console.log("Enviado al servicio")
-    console.log(factura);
-    return this.http.post<ResponseDto>(`${this.path}guardar`, factura)
+  actualizarFactura_Producto(factura_producto: any):Observable<ResponseDto>{
+    console.log("Enviado al servicio factura_producto")
+    console.log(factura_producto);
+    return this.http.post<ResponseDto>(`${this.path}guardar`, factura_producto)
     .pipe(map(
       value=>{
         return value
@@ -43,7 +53,8 @@ export class FacturasService {
     ));
   }
 
-  eliminarFactura(id: number){
+
+  eliminarFactura_Producto(id: number){
     return this.http.delete<ResponseDto>(`${this.path}eliminar/${id}`)
     .pipe(map(
       value=>{
@@ -51,5 +62,4 @@ export class FacturasService {
       }
     ));
   }
-
 }

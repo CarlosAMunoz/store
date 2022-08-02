@@ -7,7 +7,6 @@ import { Categorias } from '../model/Categorias';
 import { CategoriasService } from '../services/categorias.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HeaderComponent } from '../shared/header/header.component';
 
 
 @Component({
@@ -74,10 +73,10 @@ export class ComprarComponent implements OnInit {
       value=>{
         const dataObject = Object.values(value);
         if (dataObject[0] == 201){
+
+
           alert("Producto agregado al carrito")
-          // this.router.navigateByUrl('/header', {skipLocationChange: false}).then(() => {
-          //   this.router.navigate(['/header']);
-          // });
+
         }
       }
     )

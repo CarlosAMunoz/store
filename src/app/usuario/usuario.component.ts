@@ -33,28 +33,13 @@ export class UsuarioComponent implements OnInit {
       switchMap(({id})=>this.svcUsuario.getUsuario(id))
     ).subscribe(value=>{
       const dataObject = Object.values(value);
-      if (dataObject[0] == 200){
-        this.usuarioForm.patchValue(dataObject[2]);
-        this.snackBar.open(dataObject[1], 'Ok', {
-          horizontalPosition:'center',
-          verticalPosition:'bottom',
-          duration:5000
-        })
-      }
+      this.usuarioForm.patchValue(dataObject[2])
     });
   }
 
 
   guardar(){
     this.submitted = true;
-    // if (this.submitted && this.usuarioForm.invalid){
-    //   this.snackBar.open('Faltan datos obligatorios', 'Ok', {
-    //     horizontalPosition:'center',
-    //     verticalPosition:'bottom',
-    //     duration:5000
-    //   })
-    //   return;
-    // }
     console.log("Capturado en Form")
     console.log(this.usuarioForm.value)
     this.svcUsuario.actualizarUsuario(this.usuarioForm.value).subscribe(

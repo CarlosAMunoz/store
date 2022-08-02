@@ -1,34 +1,55 @@
-<div class="contenedor-principal">
-
+<div class="contenedor-principal row">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="nombre_Producto">
-          <th mat-header-cell *matHeaderCellDef> nombre </th>
+          <th mat-header-cell *matHeaderCellDef >Nombre producto </th>
           <td mat-cell *matCellDef="let element" >{{element.nombre_Producto}}</td>
           <td mat-footer-cell *matFooterCellDef>Total</td>
       </ng-container>
       <ng-container matColumnDef="cantidad">
-        <th mat-header-cell *matHeaderCellDef>cantidad</th>
+        <th mat-header-cell *matHeaderCellDef>Cantidad </th>
         <td mat-cell *matCellDef="let element">{{element.cantidad}}</td>
         <td mat-footer-cell *matFooterCellDef>Total</td>
      </ng-container>
      <ng-container matColumnDef="precio">
-        <th mat-header-cell *matHeaderCellDef>precio</th>
+        <th mat-header-cell *matHeaderCellDef> Precio  </th>
         <td mat-cell *matCellDef="let element">${{element.precio}}</td>
         <td mat-footer-cell *matFooterCellDef>Total</td>
      </ng-container>
       <ng-container matColumnDef="Acciones">
-        <th mat-header-cell *matHeaderCellDef>Acción</th>
+        <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element; let i = index" class="action-link center-col-accion">
         <button mat-raised-button class="btn btn-danger" (click)="eliminar(element.id_Carrito)"> <i class="fa-solid fa-trash-can"></i> </button>
         <td mat-footer-cell *matFooterCellDef>Total</td>
     </ng-container>
-
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
   </table>
+    <form [formGroup]="dataForm">
+      <div class="row first-row">
+        <div class="col">
 
-  <button type="button" class="btn btn-success"  mat-flat-button (click)="comprarCarrito()"> Comprar carrito </button>
 
+          <mat-label class="filtrar-label" style="color: #fff;">  <h4> Seleccione la dirección de envío:  </h4> </mat-label>
+
+          <select matInput formControlName="id_Direccion" class="filtro"  style="font-size: 15px; color:#535353" (change)="selectDireccion($event)">
+            <option *ngFor="let element of listDirecciones; let i = index;" [value]="element.descripcion" > {{element.descripcion}}</option>
+        </select>
+        </div>
+      </div>
+    </form>
+
+  <div class="row" style="margin-top: 10px; padding: 0px; margin: 0px;">
+
+    <div class="col">
+      <div style="background-color: #ffff; text-align:left; padding: 8px;">  <b style="text-align:left"> Total: </b>  ${{total}} </div>
+    </div>
+
+    <div class="col">
+      <button type="button" class="btn btn-success" mat-flat-button (click)="comprarCarrito()"> <i class="fa-solid fa-cart-shopping"></i> Comprar carrito </button>
+    </div>
+  </div>
 </div>
+
+
+
 

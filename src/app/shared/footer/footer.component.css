@@ -1,0 +1,11 @@
+
+.footer-bs{
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  bottom: 37px;
+  border-top: solid 1px #dddddd;
+  background-color: #F8F9FA;
+}
+
+

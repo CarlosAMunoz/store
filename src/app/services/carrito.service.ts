@@ -51,6 +51,13 @@ export class CarritoService {
     ));
   }
 
-
+  eliminarTodoCarrito(){
+    return this.http.delete<ResponseDto>(`${this.path}eliminartodo`)
+    .pipe(map(
+      value=>{
+        return value
+      }
+    ));
+  }
 
 }

@@ -56,7 +56,7 @@ export class EditCategoriasComponent implements OnInit {
         const dataObject = Object.values(value);
         if (dataObject[0] == 201){
           this.categoriasForm.patchValue = dataObject[2];
-          this.snackBar.open('Categoría agregado satisfactoriamente', 'Ok', {
+          this.snackBar.open('Categoría agregada satisfactoriamente', 'Ok', {
             horizontalPosition:'center',
             verticalPosition:'top',
             duration:5000

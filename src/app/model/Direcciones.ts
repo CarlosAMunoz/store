@@ -2,8 +2,7 @@ import { Usuario } from "./Usuario";
 
 export interface Direcciones{
 
-  id_direccion:number,
+  id_Direccion:number,
   descripcion:string,
-  id_usaurio:Usuario,
-
+  id_Usuario:Usuario,
 }

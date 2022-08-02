@@ -23,7 +23,7 @@ table td{
 
 
 .mat-column-nombre_Producto{
-  text-align: left;
+  text-align: center;
   width: 50%;
 }
 
@@ -43,6 +43,14 @@ table td{
   width: 15%;
 }
 
+h4{
+  display: inline-block;
+}
 
+.total b{
+  border: solid 1px;
+}
 
-
+.btn-success{
+  width: 100%;
+}

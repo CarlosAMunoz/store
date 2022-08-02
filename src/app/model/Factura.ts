@@ -8,4 +8,5 @@ export interface Factura{
   id_Usuario:Usuario,
   nombre_Usuario:string,
   fecha_Compra:Date
+  direccion:String
 }
