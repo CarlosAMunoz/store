@@ -2,7 +2,7 @@
 <div class="card" style="width: 90%; margin:auto; margin-top:50px;" *ngFor="let factura of listFacturas">
 
     <div class="card-body">
-      <h3 class="card-title"> <b> Datos de compra  </b> </h3>
+      <h3 class="card-title"> <b> Detalles de compra  </b> </h3>
       <p class="card-text" style=" text-align: right;">Código factura: {{factura.id_Factura}}</p>
     </div>
     <ul class="list-group list-group-flush">
@@ -11,7 +11,4 @@
       <li class="list-group-item">Dirección de envío: {{factura.direccion}} </li>
       <li class="list-group-item">Total pagado: $  {{factura.total}}</li>
     </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">Generar PDF </a>
-    </div>
 </div>
